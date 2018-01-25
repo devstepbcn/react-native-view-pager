@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   ListView,
@@ -58,7 +59,7 @@ export default class ViewPager extends Component {
         }
       } else {
         const curX = this.scroller.getCurrX();
-        this.refs['innerListView'].scrollTo({x: curX, animated: false});
+        if(this.refs['innerListView']) this.refs['innerListView'].scrollTo({x: curX, animated: false});
 
         let position = Math.floor(curX / (this.state.width + this.props.pageMargin));
         position = this.validPage(position);
